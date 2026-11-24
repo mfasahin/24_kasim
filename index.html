@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>24 Kasım Öğretmenler Günü Kutlu Olsun!</title>
+
+  <!-- Google Fonts (Fredoka & Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Harici Stil Dosyası -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Canvas Konfeti & Yaprak Yağmuru -->
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <main>
+    <!-- 1. HERO BÖLÜMÜ -->
+    <header class="hero container">
+      <div class="badge-pill" role="note">
+        <span>🍂</span> 24 Kasım Öğretmenler Günü Özel
+      </div>
+
+      <!-- Sincap Maskotu (Inline SVG) -->
+      <div class="mascot-stage" aria-label="Gözlüklü ve sevimli öğretmen sincap maskotu">
+        <div class="mascot-backdrop"></div>
+        <svg class="squirrel-svg" id="teacherSquirrel" viewBox="0 0 240 240" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <!-- Gölge -->
+          <ellipse cx="120" cy="224" rx="65" ry="12" fill="#E6D2C0" />
+
+          <!-- Kabarık Kuyruk Grubu -->
+          <g class="squirrel-tail">
+            <!-- Kuyruk Gövdesi -->
+            <path
+              d="M75 185C45 180 20 150 25 105C30 60 70 30 100 45C118 55 125 78 110 95C95 112 60 120 65 155C67 170 73 180 75 185Z"
+              fill="url(#tailGrad)" stroke="var(--squirrel-orange-dark)" stroke-width="3" stroke-linejoin="round" />
+            <!-- Kuyruk Dokusu / Tüy Çizgileri -->
+            <path d="M45 100C48 80 70 60 90 65" stroke="#FDE8D7" stroke-width="3.5" stroke-linecap="round"
+              opacity="0.6" />
+            <path d="M40 125C45 110 65 95 85 100" stroke="#FDE8D7" stroke-width="3.5" stroke-linecap="round"
+              opacity="0.6" />
+            <path d="M55 150C60 135 75 125 90 130" stroke="#FDE8D7" stroke-width="3.5" stroke-linecap="round"
+              opacity="0.6" />
+          </g>
+
+          <!-- Sincap Gövde ve Kafa Grubu -->
+          <g class="squirrel-body-group">
+            <!-- Arka Ayaklar -->
+            <ellipse cx="90" cy="215" rx="20" ry="10" fill="var(--squirrel-orange-dark)" />
+            <ellipse cx="150" cy="215" rx="20" ry="10" fill="var(--squirrel-orange-dark)" />
+
+            <!-- Gövde -->
+            <path
+              d="M85 140C85 120 155 120 155 140C162 170 160 210 148 215C135 220 105 220 92 215C80 210 78 170 85 140Z"
+              fill="var(--squirrel-orange)" stroke="var(--squirrel-orange-dark)" stroke-width="3" />
+            <!-- Karın Beyazlığı -->
+            <path
+              d="M100 145C100 135 140 135 140 145C145 170 142 205 135 210C125 214 115 214 105 210C98 205 95 170 100 145Z"
+              fill="#FFF3E8" />
+
+            <!-- Kulaklar -->
+            <g id="ears">
+              <path d="M88 75C80 50 95 38 102 52C108 62 105 72 100 78" fill="var(--squirrel-orange)"
+                stroke="var(--squirrel-orange-dark)" stroke-width="2.5" />
+              <path d="M91 68C87 55 95 48 98 55" fill="#FBC4AB" />
+              <path d="M152 75C160 50 145 38 138 52C132 62 135 72 140 78" fill="var(--squirrel-orange)"
+                stroke="var(--squirrel-orange-dark)" stroke-width="2.5" />
+              <path d="M149 68C153 55 145 48 142 55" fill="#FBC4AB" />
+            </g>
+
+            <!-- Kafa -->
+            <ellipse cx="120" cy="98" rx="42" ry="38" fill="var(--squirrel-orange)" stroke="var(--squirrel-orange-dark)"
+              stroke-width="3" />
+
+            <!-- Yanak Pofudukları -->
+            <ellipse cx="92" cy="112" rx="14" ry="12" fill="#FFF3E8" />
+            <ellipse cx="148" cy="112" rx="14" ry="12" fill="#FFF3E8" />
+            <circle cx="95" cy="112" r="6" fill="#F8A5A5" opacity="0.6" />
+            <circle cx="145" cy="112" r="6" fill="#F8A5A5" opacity="0.6" />
+
+            <!-- Gözler (Blink Animasyonlu) -->
+            <g class="squirrel-eyes">
+              <ellipse cx="106" cy="94" rx="6.5" ry="7.5" fill="#2B1810" />
+              <circle cx="104" cy="91" r="2.5" fill="#FFFFFF" />
+              <ellipse cx="134" cy="94" rx="6.5" ry="7.5" fill="#2B1810" />
+              <circle cx="132" cy="91" r="2.5" fill="#FFFFFF" />
+            </g>
+
+            <!-- Yuvarlak Öğretmen Gözlükleri -->
+            <g id="glasses">
+              <circle cx="106" cy="94" r="13" stroke="#8D5B36" stroke-width="2.8" fill="rgba(255,255,255,0.2)" />
+              <circle cx="134" cy="94" r="13" stroke="#8D5B36" stroke-width="2.8" fill="rgba(255,255,255,0.2)" />
+              <path d="M119 93C121 91 123 91 125 93" stroke="#8D5B36" stroke-width="2.8" fill="none"
+                stroke-linecap="round" />
+              <path d="M101 88L108 84" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" opacity="0.8" />
+              <path d="M129 88L136 84" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" opacity="0.8" />
+            </g>
+
+            <!-- Minik Burun ve Ağız -->
+            <polygon points="120,105 116,101 124,101" fill="#4A2810" />
+            <path d="M117 106C117 110 120 112 120 112C120 112 123 110 123 106" stroke="#4A2810" stroke-width="2"
+              stroke-linecap="round" fill="none" />
+
+            <!-- Şık Öğretmen Papyonu -->
+            <g id="bowtie">
+              <polygon points="120,133 108,126 108,140" fill="var(--chalkboard-green)" stroke="#1A2E23"
+                stroke-width="1.5" />
+              <polygon points="120,133 132,126 132,140" fill="var(--chalkboard-green)" stroke="#1A2E23"
+                stroke-width="1.5" />
+              <circle cx="120" cy="133" r="4" fill="var(--gold-yellow)" stroke="#A16207" stroke-width="1" />
+            </g>
+
+            <!-- Kollar ve Tebeşir -->
+            <ellipse cx="88" cy="155" rx="10" ry="18" transform="rotate(25 88 155)" fill="var(--squirrel-orange)"
+              stroke="var(--squirrel-orange-dark)" stroke-width="2.5" />
+            <g id="rightArmChalk">
+              <ellipse cx="152" cy="152" rx="10" ry="18" transform="rotate(-35 152 152)" fill="var(--squirrel-orange)"
+                stroke="var(--squirrel-orange-dark)" stroke-width="2.5" />
+              <rect x="156" y="140" width="7" height="18" rx="2" transform="rotate(30 156 140)" fill="#FFFFFF"
+                stroke="#D1D5DB" stroke-width="1" />
+              <circle cx="156" cy="156" r="6" fill="#F4A261" />
+            </g>
+          </g>
+
+          <defs>
+            <linearGradient id="tailGrad" x1="25" y1="40" x2="110" y2="180" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#E76F51" />
+              <stop offset="60%" stop-color="#D97736" />
+              <stop offset="100%" stop-color="#B55B1E" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <h1 class="hero-title" id="heroTitle">
+        24 Kasım Öğretmenler Günün Kutlu Olsun, <span class="highlight" id="heroName">Öğretmenim!</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Geleceğin En Güzel, En Tatlı Öğretmeni, Bugün senin günün! Gelecekte fidanlara sevgiyle dokunacak o sıcacık
+        yüreğin için hazırladığım sürprizlerle dolu sınıfa hoş geldin.
+      </p>
+
+      <a href="#chalkboardGame" class="btn-primary" aria-label="Sürpriz Sınıfı Keşfet bölümüne kaydır">
+        <span>Sürpriz Sınıfı Keşfet</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </a>
+    </header>
+
+    <!-- 2. KARA TAHTA & PALAMUT OYUNU -->
+    <section id="chalkboardGame" class="section-spacing container" aria-labelledby="gameHeading">
+      <div class="chalkboard-outer">
+        <div class="chalkboard-inner">
+          <div class="board-header">
+            <h2 id="gameHeading">Gülin Öğretmen'in Palamut Sepeti</h2>
+            <p>Palamutlara tıkla, senin için saklanan 6 özel öğretmenlik notunu topla!</p>
+          </div>
+
+          <!-- İlerleme Çubuğu -->
+          <div class="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="6"
+            id="progressBar" aria-label="Toplanan palamut ilerlemesi">
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-status">
+              <span id="progressCountText">0 / 6 palamut toplandı</span>
+              <span id="progressStatusHint">Hadi başla! 🌰</span>
+            </div>
+          </div>
+
+          <!-- 6 Palamut Izgarası -->
+          <div class="acorns-grid" id="acornsGrid" role="region" aria-label="Palamut avı alanı">
+            <!-- JS ile doldurulacak -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. KARNE VE MEKTUP BÖLÜMÜ -->
+    <section id="reportSection" class="section-spacing container" aria-labelledby="reportTitle">
+      <!-- Kilitli Durum İpucu -->
+      <div id="lockedCard" class="locked-card">
+        <div class="locked-icon" aria-hidden="true">🔒</div>
+        <h3>Yılın En İyi Öğretmeni Karnesi</h3>
+        <p>Karneni ve sana özel mektubu açmak için yukarıdaki 6 palamudun tamamını toplamalısın!</p>
+      </div>
+
+      <!-- Açılan Karne & Mektup Kartı -->
+      <div id="unlockedCard" class="report-card" style="display: none;">
+        <div class="report-pin" aria-hidden="true"></div>
+
+        <header class="report-header">
+          <div class="school-name">2026 - 2027 Eğitim ve Sevgi Yılı</div>
+          <h3 id="reportTitle">Yılın En Mükemmel Öğretmeni Karnesi</h3>
+          <span class="student-badge" id="reportRecipientName">Öğretmen: Canım</span>
+        </header>
+
+        <!-- Not Kriterleri Listesi -->
+        <div class="score-list" id="scoreList">
+          <!-- JS ile doldurulacak -->
+        </div>
+
+        <!-- Özel Daktilo Mektubu -->
+        <div class="letter-container">
+          <h4 class="letter-title">
+            <span>💌</span> Kalpten Bir Teşekkür Mektubu
+          </h4>
+          <div class="letter-body" id="letterText" aria-live="polite"></div>
+          <button id="skipTypewriterBtn" class="btn-skip-typing" style="display:none;"
+            aria-label="Mektup yazma efektini atla ve tamamını göster">
+            Hepsini Göster ⏩
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. FİNAL & SÜRPRİZ BÖLÜMÜ -->
+    <section id="finalSection" class="final-section container" style="display: none;"
+      aria-label="Bitiş ve hediye sürprizi">
+      <button id="btnSurprise" class="btn-surprise-trigger" aria-label="Günün Sürprizini Aç">
+        <span>🎁</span>
+        <span>Günün Sürprizini Aç</span>
+      </button>
+
+      <!-- Sürpriz Detay Kartı -->
+      <div id="surpriseCard" class="surprise-card-reveal" role="region" aria-labelledby="surpriseTitle">
+        <div class="surprise-badge">Günün Hediyesi</div>
+        <h3 id="surpriseTitle">Özel Kutlama</h3>
+        <p class="main-text" id="surpriseText"></p>
+        <div class="surprise-ticket" id="surpriseDetails"></div>
+
+        <button id="btnReplay" class="btn-replay" aria-label="Oyunu tekrar oyna">
+          ↺ Tekrar Oyna
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL: NOT KARTI POPUP -->
+  <div class="modal-overlay" id="noteModal" role="dialog" aria-modal="true" aria-labelledby="modalNoteTitle"
+    aria-describedby="modalNoteText">
+    <div class="note-card">
+      <div class="note-icon-circle" id="modalNoteIcon">🌰</div>
+      <div class="note-tag" id="modalNoteIndex">Not 1 / 6</div>
+      <h3 class="note-title" id="modalNoteTitle">Not Başlığı</h3>
+      <p class="note-text" id="modalNoteText">Not içeriği buraya gelecek...</p>
+      <button class="btn-close-modal" id="modalCloseBtn" aria-label="Not kartını kapat">
+        Harika! Devam Et ✨
+      </button>
+    </div>
+  </div>
+
+  <!-- AYARLAR VE UYGULAMA SKRİPTLERİ -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
